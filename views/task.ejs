@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav>
+            <%- include('_header'); %>
+        </nav>
+        <section id="side-bar">
+            <div class="side-details"><a href="/task/new"><i class="fab fa-tumblr bounce1"></i><i class="fab fa-opera bounce2"></i> <i class="fab fa-dochub bounce1"></i> <i class="fab fa-opera bounce2"></i></a></div>
+            <div class="side-details"><a href="/">Today Tasks</a></div>
+            <div class="side-details"><a href="/task/all">All Tasks</a></div>
+            <div class="side-details"><a href="/favourite">Favourites</a></div>
+            <div class="side-details"><a href="/task/pending">Pending Tasks</a></div>
+            <div class="side-details"><a href="/task/upcoming">Upcoming Tasks</a></div>
+        </section>
+        <section id="main">
+            <div class="inside-div">
+                <% if(Object.keys(task_list).length==0){ %>
+                    <div class="descrip"><%= msg %></div>
+                <% }else{%>
+                <% for(let i of task_list) {%>
+                <div class="block">
+                    <div id="star">
+                        <% if(i.favourite==true){ %>
+                         <a href="/favourite/remove/?id=<%= i.id %>"><i class="fas fa-star"></i></a>
+                         <% } else {%>
+                        <a href="/favourite/add/?id=<%= i.id %>"><i class="far fa-star"></i></a>
+                        <% } %>
+                     </div>
+                    <div>
+                    <div class="block-title"><%= i.name %> </div>
+                    <div class="block-category"> Category: <% if(i.category!="") {%>
+                        <%= i.category%>
+                       <% } else {%>
+                           None
+                           <% }%> </div> 
+                           
+                    <div class="block-date"><i class="fas fa-calendar-alt"></i><%= i.date.toISOString().slice(0,10) %></div>
+                    <div class="block-description">Description:  
+                    <% if(i.details!="") {%>
+                     <%= i.details%>
+                    <% } else {%>
+                        Not available
+                        <% }%> 
+                    </div>
+                    
+                </div>
+                
+                    <button class="block-button"><a href="/task/delete/?id=<%=i.id%>"><i class="far fa-check-circle"></i>Done</a></button>
+                </div>
+                
+            <% } %>
+            <% } %>
+            </div>
+        </section>
+       <div class="add_task"><a href="/task/new"><div id="edit"><i class="fas fa-plus"></i></div></a></div>
+    </body>
+</html>

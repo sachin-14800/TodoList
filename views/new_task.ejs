@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav>
+            <%- include('_header'); %>
+        </nav>
+       <main>
+               <form action="/task/create" method="POST">
+                   <hr>
+                  <div class="title">Title</div> <input type="text" name="name" placeholder="What do you need to do?" class="title_field">
+                  <hr>
+                  
+                  <div class="title">Category</div> 
+                  <select name="category" id="category" class="category">
+                    <option value="">Choose a Category</option>
+                      <option value="Personal">Personal</option>
+                      <option value="School">School</option>
+                      <option value="Work">Work</option>
+                      <option value="Other">Other</option>
+                  </select>
+                <div class="inline">
+                  <div class="title">Due Date</div>
+                    <input type="date" id="due_date" name="date">
+                </div>
+                <div id="textarea"><div class="title">
+                    Comments</div>
+                <textarea name="details" cols="120" rows="5"></textarea>
+            </div>
+            <button type="submit" class="submit"><i class="fas fa-plus"></i>Add task</button>
+               </form>
+           </div>
+       </main>
+    </body>
+</html>
