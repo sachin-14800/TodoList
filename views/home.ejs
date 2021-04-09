@@ -1,15 +1,23 @@
+
 <html>
     <head>
+        <!-- title -->
         <title>
             <%= title %>
         </title>
+        <!-- title close -->
+        <!-- adding css files -->
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     </head>
     <body>
+        <!-- header of the page -->
         <nav>
             <%- include('_header'); %>
         </nav>
+        <!-- header ends -->
+
+        <!-- section- side menu -->
         <section id="side-bar">
             <div class="side-details"><a href="/task/new"><i class="fab fa-tumblr bounce1"></i><i class="fab fa-opera bounce2"></i> <i class="fab fa-dochub bounce1"></i> <i class="fab fa-opera bounce2"></i></a></div>
             <div class="side-details"><a href="/">Today Tasks</a></div>
@@ -18,17 +26,23 @@
             <div class="side-details"><a href="/task/pending">Pending Tasks</a></div>
             <div class="side-details"><a href="/task/upcoming">Upcoming Tasks</a></div>
         </section>
+        <!-- section ends -->
+
+        <!-- section- main -->
         <section id="main">
             <div class="inside-div">
-                <% if(Object.keys(task_list).length==0){ %>
-                    <div class="descrip">No Tasks found. Add a task to start your day.</div>
+                <% if(Object.keys(task_list).length==0){ %>  
+                    <!-- if no tasks then adding some msg -->
+                    <div class="descrip">No Tasks found. Add a task to start your day.</div>  
                 <% }else{%>
                 <% for(let i of task_list) {%>
                 <div class="block">
                     <div id="star">
                         <% if(i.favourite==true){ %>
+                            <!-- favourite  -->
                          <a href="/favourite/remove/?id=<%= i.id %>"><i class="fas fa-star"></i></a>
                          <% } else {%>
+                            <!-- not a favourite -->
                         <a href="/favourite/add/?id=<%= i.id %>"><i class="far fa-star"></i></a>
                         <% } %>
                      </div>
@@ -49,7 +63,8 @@
                     </div>
                     
                 </div>
-                
+
+                <!-- delete button -->
                     <button class="block-button"><a href="/task/delete/?id=<%=i.id%>"><i class="far fa-check-circle"></i>Done</a></button>
                 </div>
                 
@@ -57,6 +72,10 @@
             <% } %>
             </div>
         </section>
+        <!-- section ends -->
+
+        <!-- Add task button -->
        <div class="add_task"><a href="/task/new"><div id="edit"><i class="fas fa-plus"></i></div></a></div>
+
     </body>
 </html>
