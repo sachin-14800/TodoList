@@ -1,9 +1,12 @@
 {
+  "homepage": "https://sachin-14800.github.io/TodoList",
   "name": "to_do_app",
   "version": "1.0.0",
   "description": "Adding your daily tasks web application",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +15,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "gh-pages": "^3.1.0",
     "mongoose": "^5.12.3"
   }
 }
