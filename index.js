@@ -6,7 +6,7 @@ const express=require('express');
 const app=express();
 
 //setting the port number on which the server will run
-const port=5000;
+const port=process.env.PORT || 5000;
 
 //importing the database module for connection to the database
 const db=require('./config/mongoose');
